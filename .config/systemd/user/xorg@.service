@@ -1,0 +1,16 @@
+[Unit]
+Description=Socket for xorg at display %i
+
+Requires=xorg@%i.socket
+After=xorg@%i.socket
+Wants=tmux.service
+After=tmux.service
+
+[Service]
+Type=simple
+SuccessExitStatus=0 1
+
+ExecStart=/usr/bin/Xorg :%i -nolisten tcp -noreset -verbose 2 "vt${XDG_VTNR}"
+
+[Install]
+WantedBy=multi-user.target

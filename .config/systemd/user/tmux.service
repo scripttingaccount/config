@@ -1,0 +1,13 @@
+[Unit]
+Description=tmux: A terminal multiplexer
+After=st.service
+Wants=st.service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/tmux new-session -s kite -d
+ExecStop=/usr/bin/tmux kill-server 
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=multiplexer.target

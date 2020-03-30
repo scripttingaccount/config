@@ -1,0 +1,13 @@
+[Unit]
+Description=tmux: A terminal multiplexer
+After=gpg-agent.service
+Wants=gpg-agent.service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/tmux start 
+ExecStop=/usr/bin/tmux kill-server 
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=multiplexer.target

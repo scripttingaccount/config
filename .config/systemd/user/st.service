@@ -1,0 +1,13 @@
+[Unit]
+Description=St Terminal
+After=xorg.target
+Requires=xorg.target
+
+[Service]
+ExecStart=/usr/local/bin/st
+Restart=on-failure
+RestartSec=10
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=wm.target
